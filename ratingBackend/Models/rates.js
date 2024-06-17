@@ -11,5 +11,5 @@ const rateSchema= new mongoose.Schema({
       }
 })
 
-const rateModel= mongoose.model('starRating' , rateSchema )
+const rateModel= mongoose.model('starrate' , rateSchema )
 module.exports= rateModel

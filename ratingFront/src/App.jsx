@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { Stack, TextField, Typography, Button } from '@mui/material'
 import './App.css'
 import ReactStars from "react-rating-stars-component"
+import axios from 'axios';
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   const [formData, setFormData] = useState({
     rating: 0,
-    comment: ''
+    demoName: ''
   });
 
   const ratingChanged = (rate) => {
@@ -25,14 +25,30 @@ function App() {
     const { value } = event.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      comment: value
+      demoName: value
     }));
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/v1/rate",
+        {
+          demoName: formData.demoName,
+          rate: formData.rating
+        },
+        {
+          withCredentials: true, headers: { 'Content-Type': 'application/json' }
+        }
+      );
+      console.log("this is res ", res.data);
+    }
+    catch (error) {
+      console.error(error);
+    }
   }
 
   return (
