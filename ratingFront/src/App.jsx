@@ -53,7 +53,7 @@ function App() {
 
   return (
     <><Stack sx={{ background: "grey" }}>
-      <Stack sx={{ border: "3px solid navy", padding: 7, bgcolor: "black", borderRadius: "30px", overflow: "hidden" }}>
+      <Stack sx={{ border: "3px solid navy", padding: 7, bgcolor: "black", overflow: "hidden" }}>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
             <Stack>
@@ -68,7 +68,7 @@ function App() {
             </Stack>
             <Stack>
               <TextField
-                label="Your comment about service"
+                label="Demo number"
                 value={formData.comment}
                 onChange={handleCommentChange}
                 sx={{
